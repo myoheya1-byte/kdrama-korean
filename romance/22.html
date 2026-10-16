@@ -19,10 +19,12 @@ h1{font-size:42px;color:#A03E5C;margin:8px 0 0;line-height:1.2}
 .b .who{background:#A03E5C}
 audio{width:100%;height:40px}.quiet{font-size:13px;font-style:italic;color:#999}
 .nav{display:flex;justify-content:space-between;margin-top:26px;font-size:14px}.nav a{color:#A03E5C;text-decoration:none;font-weight:700}
+.spd{display:flex;gap:8px;margin:8px 0 2px}.spd button{border:1.5px solid #EC8096;background:#fff;color:#A03E5C;border-radius:20px;padding:6px 14px;font-size:14px;font-weight:700}
+.spd button.on{background:#A03E5C;border-color:#A03E5C;color:#fff}
 .foot{margin-top:22px;font-size:12px;color:#aaa;text-align:center}
 </style></head><body><div class="wrap">
 <div class="top">K-Drama Talk · Romance</div>
-<div class="no">22</div><h1>질투해?</h1><div class="rom">jil-tu-hae?</div><div class="mean">Are you jealous?</div><div class="vk">Voices:<span class="sw card v0"></span>은경<span class="sw card v1"></span>서준</div>
+<div class="no">22</div><h1>질투해?</h1><div class="rom">jil-tu-hae?</div><div class="mean">Are you jealous?</div><div class="spd"><button id="n" class="on" onclick="sp(1)">Normal</button><button id="s" onclick="sp(0.75)">🐢 Slow</button></div><div class="vk">Voices:<span class="sw card v0"></span>은경<span class="sw card v1"></span>서준</div>
 
 <div class="lab">Word</div>
 <div class="card v0"><div class="ko">질투해?</div><div class="ro">jil-tu-hae?</div><audio controls preload="auto" src="audio/22_word.mp3"></audio></div>
@@ -34,4 +36,9 @@ audio{width:100%;height:40px}.quiet{font-size:13px;font-style:italic;color:#999}
 <div class="card v0 a"><div class="ko"><span class="who">A</span>너 아까부터 표정이 왜 그래? 질투해?</div><div class="ro">Neo akkabuteo pyojeong-i wae geurae? Jiltuhae?</div><div class="en">Why have you had that face since earlier? Are you jealous?</div><audio controls preload="auto" src="audio/22_dlg_a.mp3"></audio></div><div class="card v1 b"><div class="ko"><span class="who">B</span>질투는 무슨!</div><div class="ro">Jiltuneun museun!</div><div class="en">Jealous? As if!</div><audio controls preload="auto" src="audio/22_dlg_b.mp3"></audio></div>
 <div class="nav"><span><a href="21.html">← 21</a></span><a href="index.html">All 36</a><span><a href="23.html">23 →</a></span></div>
 <div class="foot">Korean audio made with AI voices, checked by a native speaker · ULBOM</div>
-</div></body></html>
+</div><script>
+function sp(r){document.querySelectorAll('audio').forEach(a=>{a.playbackRate=r;a.preservesPitch=true;a.defaultPlaybackRate=r});
+document.getElementById('n').classList.toggle('on',r==1);document.getElementById('s').classList.toggle('on',r!=1);
+try{localStorage.setItem('kdt-speed',r)}catch(e){}}
+try{var r=parseFloat(localStorage.getItem('kdt-speed'));if(r&&r!=1)sp(r)}catch(e){}
+</script></body></html>
