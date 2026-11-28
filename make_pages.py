@@ -23,6 +23,8 @@ BOOKS = {
                  text="#3A2A22", soft="#FBE3D6", line="#F0CDB8", tint="#FFF3EA"),
     "revenge": dict(md="60_복수막장편_본문_전체.md", label="Revenge", bg="#FBF8FC", accent="#961C4E", deep="#3A143E",
                     text="#2F2433", soft="#F3E3EE", line="#E3CCDD", tint="#F4EFF8"),
+    "valentine": dict(md="65_발렌타인편_본문_전체.md", label="Valentine", bg="#FFF8F8", accent="#B8264A", deep="#5B1230",
+                      text="#3A2228", soft="#FBE3E8", line="#F0CCD5", tint="#FFF0F3"),
 }
 
 def parse_travel(md):
@@ -60,7 +62,7 @@ def voices(book):
         kinds = ["word", "example", "dlg_a", "dlg_b"]
         tags = re.findall(r"^\d{3}\s+\[(.+?)\]", t, re.M)
         return {f"{i // 4 + 1:02d}_{kinds[i % 4]}": v for i, v in enumerate(tags)}, ["은경", "서준"]
-    if book in ("christmas", "office", "family", "school", "travel", "food", "revenge"):
+    if book in ("christmas", "office", "family", "school", "travel", "food", "revenge", "valentine"):
         key = json.loads((SITE / f"{'xmas' if book == 'christmas' else book}_voice_key.json").read_text(encoding="utf-8"))["order"]
         return {f: v for v, fs in key.items() for f in fs}, ["은경", "서준"]
     key = json.loads((SITE / "palace_voice_key.json").read_text(encoding="utf-8"))["by_voice"]
